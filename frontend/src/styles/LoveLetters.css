@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Satisfy&display=swap');
+
+.love-letters {
+    animation: fadeIn 0.6s ease-in-out;
+    position: relative;
+    background: linear-gradient(135deg, var(--background-gradient-start) 0%, var(--background-light) 50%, var(--background-gradient-end) 100%);
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+/* Floating hearts decoration */
+.floating-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    top: -20px;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    opacity: 0.2;
+    animation: floatDown linear infinite;
+}
+
+@keyframes floatDown {
+    0% {
+        top: -20px;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 110vh;
+        opacity: 0;
+        transform: translateX(30px) rotate(360deg);
+    }
+}
+
+/* Heart celebration */
+.heart-celebration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.celebration-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: burstOut 1.5s ease-out forwards;
+}
+
+@keyframes burstOut {
+    0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: 
+            translateX(calc(cos(var(--angle)) * 150px))
+            translateY(calc(sin(var(--angle)) * 150px))
+            scale(1.5) 
+            rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.letters-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.letters-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 6px var(--card-shadow);
+}
+
+.letters-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.empty-state {
+    background: var(--card-background);
+    padding: 4rem 3rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.empty-heart {
+    color: var(--primary-color);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.empty-state p {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+/* Letters Container */
+.letters-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+}
+
+/* Sidebar with Letter Previews */
+.letters-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.letter-preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--card-background);
+    border: 3px solid transparent;
+    padding: 1.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Colorful preview cards */
+.letter-preview-0 { border-color: var(--dusty-mauve); }
+.letter-preview-1 { border-color: var(--wine-red); }
+.letter-preview-2 { border-color: var(--light-mauve); }
+.letter-preview-3 { border-color: var(--accent-color); }
+
+.letter-preview::before {
+    content: '♥';
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.1;
+    transition: all 0.3s ease;
+}
+
+.letter-preview:hover {
+    transform: translateX(10px) scale(1.05);
+    box-shadow: 0 8px 25px var(--card-shadow);
+}
+
+.letter-preview:hover::before {
+    opacity: 0.3;
+    transform: scale(1.2);
+}
+
+.letter-preview.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateX(10px);
+}
+
+.letter-preview.active::before {
+    color: var(--text-light);
+    opacity: 0.2;
+}
+
+.preview-heart {
+    flex-shrink: 0;
+    color: var(--primary-color);
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.letter-preview.active .preview-heart {
+    color: var(--text-light);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.preview-content {
+    flex: 1;
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    font-family: 'Dancing Script', cursive;
+    margin-bottom: 0.3rem;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.letter-preview.active .preview-title {
+    color: var(--text-light);
+}
+
+.preview-date {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    font-family: 'Caveat', cursive;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.letter-preview.active .preview-date {
+    color: var(--text-light);
+    opacity: 0.9;
+}
+
+/* Letter Display */
+.letter-display {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.letter-paper {
+    background: var(--card-background);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px var(--card-shadow);
+    border: 3px solid var(--primary-color);
+    position: relative;
+    transform: rotate(-0.5deg);
+    transition: transform 0.3s ease;
+}
+
+.letter-paper:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Decorative elements */
+.paper-decoration {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+.paper-decoration.top-left {
+    top: 15px;
+    left: 15px;
+}
+
+.paper-decoration.top-right {
+    top: 15px;
+    right: 15px;
+}
+
+.paper-decoration.bottom-left {
+    bottom: 15px;
+    left: 15px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.paper-decoration.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    animation: pulse 2s ease-in-out infinite 1s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+.letter-header-content {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px dashed var(--accent-color);
+}
+
+.letter-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.8rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.letter-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    font-family: 'Caveat', cursive;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.letter-body {
+    margin-bottom: 3rem;
+    line-height: 2.2;
+}
+
+.letter-text {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    white-space: pre-line;
+    font-family: 'Satisfy', cursive;
+}
+
+.letter-footer {
+    text-align: right;
+    padding-top: 2rem;
+    border-top: 2px dashed var(--accent-color);
+}
+
+.letter-signature {
+    font-size: 1.1rem;
+    font-family: 'Caveat', cursive;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.letter-sender {
+    font-size: 2rem;
+    color: var(--text-dark);
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .letters-container {
+        grid-template-columns: 1fr;
+    }
+
+    .letters-sidebar {
+        order: 2;
+        margin-top: 2rem;
+    }
+
+    .letter-display {
+        order: 1;
+    }
+
+    .letter-paper {
+        padding: 2rem;
+    }
+
+    .letter-title {
+        font-size: 2.2rem;
+    }
+
+    .letter-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .letters-title {
+        font-size: 2.5rem;
+    }
+
+    .letter-paper {
+        padding: 1.5rem;
+    }
+
+    .paper-decoration {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Satisfy&display=swap');
+
+.our-story {
+    animation: fadeIn 0.6s ease-in-out;
+    position: relative;
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: confettiFall linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.story-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.story-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: #6B2C3E;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 6px rgba(107, 44, 62, 0.2);
+}
+
+.story-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #8B4558;
+    font-weight: 600;
+}
+
+.empty-state {
+    background: rgba(255, 228, 228, 0.5);
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.3rem;
+    color: #6B2C3E;
+    box-shadow: 0 5px 20px rgba(107, 44, 62, 0.1);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Center line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #A65D72, #FFD4D4);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 50%;
+    padding: 0 2rem;
+    animation: slideIn 0.6s ease-out;
+    cursor: pointer;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Sticky Note Style */
+.timeline-content.sticky-note {
+    background: linear-gradient(135deg, #FFF9E6 0%, #FFECB3 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 3px;
+    box-shadow: 
+        0 4px 6px rgba(107, 44, 62, 0.1),
+        0 1px 3px rgba(107, 44, 62, 0.08),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    position: relative;
+    transform: rotate(-1deg);
+    font-family: 'Satisfy', cursive;
+}
+
+.timeline-item.right .timeline-content.sticky-note {
+    transform: rotate(1deg);
+}
+
+/* Alternate colors for sticky notes */
+.timeline-item:nth-child(2n) .timeline-content.sticky-note {
+    background: linear-gradient(135deg, #FFE5E5 0%, #FFD4D4 100%);
+}
+
+.timeline-item:nth-child(3n) .timeline-content.sticky-note {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+}
+
+.timeline-item:nth-child(4n) .timeline-content.sticky-note {
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+}
+
+/* Pin on sticky note */
+.sticky-note-pin {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #6B2C3E 0%, #8B4558 100%);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-content.sticky-note.active {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 
+        0 10px 25px rgba(107, 44, 62, 0.2),
+        0 5px 10px rgba(107, 44, 62, 0.15);
+    z-index: 10;
+}
+
+.timeline-content:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 
+        0 8px 20px rgba(107, 44, 62, 0.15),
+        0 3px 8px rgba(107, 44, 62, 0.1);
+}
+
+/* Remove arrows */
+.timeline-item.left .timeline-content::after,
+.timeline-item.right .timeline-content::after {
+    display: none;
+}
+
+.timeline-dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: #6B2C3E;
+    border: 4px solid #FFE5E5;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px #FFD4D4;
+    z-index: 1;
+}
+
+.timeline-item.left .timeline-dot {
+    right: -10px;
+}
+
+.timeline-item.right .timeline-dot {
+    left: -10px;
+}
+
+.timeline-date {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    color: #6B2C3E;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timeline-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7rem;
+    color: #6B2C3E;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.timeline-description {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.1rem;
+    color: #4A1520;
+    line-height: 1.8;
+    min-height: 60px;
+}
+
+/* Typewriter cursor */
+.typing-cursor {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #6B2C3E;
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item,
+    .timeline-item.left,
+    .timeline-item.right {
+        width: 100%;
+        left: 0;
+        padding-left: 60px;
+        padding-right: 1rem;
+        text-align: left;
+    }
+
+    .timeline-item.left .timeline-dot,
+    .timeline-item.right .timeline-dot {
+        left: 10px;
+        right: auto;
+    }
+    
+    .story-title {
+        font-size: 3rem;
+    }
+    
+    .story-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .timeline-content.sticky-note,
+    .timeline-item.right .timeline-content.sticky-note {
+        transform: rotate(0deg);
+    }
+}

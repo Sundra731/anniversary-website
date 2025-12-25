@@ -1,0 +1,137 @@
+/* Import romantic font */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+/* Header at Top */
+.page-header {
+    background: linear-gradient(135deg, var(--deep-burgundy), var(--wine-red));
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px var(--card-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    flex: 1;
+    text-align: center;
+}
+
+.header-dark-mode {
+    position: absolute;
+    right: 2rem;
+}
+
+.site-title {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress-indicator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.current-section {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.section-counter {
+    color: var(--light-mauve);
+    font-size: 1rem;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+}
+
+/* Floating Navigation Buttons */
+.floating-nav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 900;
+    pointer-events: none;
+}
+
+.floating-btn {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--wine-red);
+    border: 3px solid var(--text-light);
+    color: var(--text-light);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--card-shadow);
+    pointer-events: all;
+}
+
+.floating-btn:hover:not(:disabled) {
+    background: var(--deep-burgundy);
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px var(--card-shadow);
+}
+
+.floating-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.prev-btn {
+    left: 2rem;
+}
+
+.next-btn {
+    right: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        padding: 0.8rem 1rem;
+    }
+
+    .header-dark-mode {
+        right: 1rem;
+    }
+
+    .site-title {
+        font-size: 1.8rem;
+    }
+
+    .current-section {
+        font-size: 1rem;
+    }
+
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .prev-btn {
+        left: 1rem;
+    }
+
+    .next-btn {
+        right: 1rem;
+    }
+}

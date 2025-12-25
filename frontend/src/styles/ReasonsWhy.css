@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Satisfy&display=swap');
+
+.reasons-why {
+    animation: fadeIn 0.6s ease-in-out;
+    position: relative;
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: -10px;
+    animation: confettiFall linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Milestone Celebration */
+.milestone-celebration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    animation: celebrationPop 3s ease-out;
+}
+
+.milestone-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #6B2C3E;
+    text-shadow: 3px 3px 6px rgba(107, 44, 62, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(107, 44, 62, 0.3);
+}
+
+@keyframes celebrationPop {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    10% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    20% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    80% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+.reasons-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.reasons-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    color: #6B2C3E;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-shadow: 3px 3px 6px rgba(107, 44, 62, 0.2);
+}
+
+.reasons-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: #8B4558;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.reasons-count {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #6B2C3E;
+    font-weight: 700;
+}
+
+.empty-state {
+    background: rgba(255, 228, 228, 0.5);
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Satisfy', cursive;
+    font-size: 1.3rem;
+    color: #6B2C3E;
+    box-shadow: 0 5px 20px rgba(107, 44, 62, 0.1);
+}
+
+/* Grid Layout */
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Flip Card */
+.reason-card {
+    perspective: 1000px;
+    height: 250px;
+    cursor: pointer;
+    position: relative;
+}
+
+.reason-card:hover {
+    animation: wiggle 0.5s ease-in-out;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.reason-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(107, 44, 62, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Colorful Card Variations */
+.card-color-0 { background: linear-gradient(135deg, #FFE5E5, #FFD4D4); }
+.card-color-1 { background: linear-gradient(135deg, #6B2C3E, #8B4558); }
+.card-color-2 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.card-color-3 { background: linear-gradient(135deg, #A65D72, #C97B8E); }
+.card-color-4 { background: linear-gradient(135deg, #FFC9C9, #FFB3B3); }
+.card-color-5 { background: linear-gradient(135deg, #E8D5D5, #D4BEBE); }
+
+/* Front of Card */
+.card-front {
+    color: white;
+}
+
+.card-color-0.card-front,
+.card-color-2.card-front,
+.card-color-4.card-front,
+.card-color-5.card-front {
+    color: #6B2C3E;
+}
+
+.card-number {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+    color: #6B2C3E;
+}
+
+.card-color-1.card-front .card-icon,
+.card-color-3.card-front .card-icon {
+    color: #FFE5E5;
+}
+
+.card-hint {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+/* Back of Card */
+.card-back {
+    transform: rotateY(180deg);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-color-0.card-back,
+.card-color-2.card-back,
+.card-color-4.card-back,
+.card-color-5.card-back {
+    color: #4A1520;
+}
+
+.card-color-1.card-back,
+.card-color-3.card-back {
+    color: #FFE5E5;
+}
+
+/* Sparkles on revealed cards */
+.sparkles {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.sparkle {
+    font-size: 1rem;
+    animation: sparkleAnimation 1.5s ease-in-out infinite;
+}
+
+.sparkle:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.sparkle:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes sparkleAnimation {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(180deg);
+    }
+}
+
+.reason-text {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Heart Burst Animation */
+.heart-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.burst-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    color: #6B2C3E;
+    animation: burstOut 1s ease-out forwards;
+    transform-origin: center;
+}
+
+@keyframes burstOut {
+    0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(
+            calc(cos(var(--angle)) * 100px),
+            calc(sin(var(--angle)) * 100px)
+        ) scale(1.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Hover Effect */
+.reason-card:hover .card-inner {
+    transform: scale(1.05);
+}
+
+.reason-card.flipped:hover .card-inner {
+    transform: rotateY(180deg) scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reasons-title {
+        font-size: 2.5rem;
+    }
+    
+    .milestone-text {
+        font-size: 2rem;
+        padding: 1.5rem 2rem;
+    }
+    
+    .reasons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .reason-card {
+        height: 200px;
+    }
+    
+    .card-number {
+        font-size: 2.5rem;
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .reason-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reasons-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1rem;
+    }
+    
+    .reason-card {
+        height: 180px;
+    }
+    
+    .milestone-text {
+        font-size: 1.5rem;
+        padding: 1rem 1.5rem;
+    }
+}

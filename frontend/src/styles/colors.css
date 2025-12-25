@@ -1,0 +1,49 @@
+:root {
+  /* Burgundy & Mauve Color Palette - Light Mode */
+  --deep-burgundy: #5d3a42;
+  --wine-red: #7d4956;
+  --dusty-mauve: #b48b96;
+  --champagne: #f4ebe1;
+  --soft-grey: #d1c7c3;
+  
+  /* Additional shades */
+  --light-mauve: #d4b5be;
+  --dark-wine: #4a2d35;
+  --warm-white: #faf7f4;
+  
+  /* Semantic colors - Light Mode */
+  --primary-color: var(--wine-red);
+  --secondary-color: var(--deep-burgundy);
+  --accent-color: var(--dusty-mauve);
+  --background-light: var(--champagne);
+  --background-gradient-start: var(--champagne);
+  --background-gradient-end: var(--light-mauve);
+  --text-dark: #2a1a1f;
+  --text-light: var(--warm-white);
+  --card-background: #ffffff;
+  --card-shadow: rgba(93, 58, 66, 0.15);
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  --deep-burgundy: #d4b5be;
+  --wine-red: #b48b96;
+  --dusty-mauve: #9d7582;
+  --champagne: #1a1315;
+  --soft-grey: #6b5861;
+  
+  /* Dark mode specific */
+  --dark-wine: #2a1a1f;
+  --light-mauve: #4a2d35;
+  
+  --primary-color: var(--wine-red);
+  --secondary-color: var(--dusty-mauve);
+  --accent-color: var(--deep-burgundy);
+  --background-light: #1a1315;
+  --background-gradient-start: #1a1315;
+  --background-gradient-end: #2a1a1f;
+  --text-dark: #f0e5e8;
+  --text-light: var(--warm-white);
+  --card-background: #251a1f;
+  --card-shadow: rgba(0, 0, 0, 0.5);
+}
